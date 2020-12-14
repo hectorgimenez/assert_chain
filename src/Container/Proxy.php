@@ -3,6 +3,7 @@ namespace AssertChain\Container;
 
 
 use AssertChain\Container;
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 
 /**
  * Class Proxy
@@ -115,6 +116,9 @@ class Proxy extends Container
             case 'beEmpty':
                 $method = 'assertEmpty';
                 break;
+            case 'arraySubset':
+                ArraySubsetAsserts::assertArraySubset(...array_values($args));
+                return $this;
         }
 
         try {
